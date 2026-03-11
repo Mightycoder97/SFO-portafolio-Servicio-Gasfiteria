@@ -6,17 +6,17 @@
     <div class="footer-grid grid grid-cols-4">
       
       <div class="footer-col brand-col">
-        <a href="/" class="logo">
-          <i class="ph ph-drop text-primary"></i>
+        <a href="/" class="logo" aria-label="Ir a la página de inicio">
+          <i class="ph ph-drop text-primary" aria-hidden="true"></i>
           <span class="logo-text">Gasfitero en Juliaca</span>
         </a>
         <p class="text-light mt-4">
           Expertos en fontanería y prevención. Estamos en Juliaca y cubrimos emergencias a nivel nacional.
         </p>
         <div class="social-links mt-4">
-          <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
-          <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
-          <a href="#" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
+          <a href="#" aria-label="Visitar nuestra página de Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Visitar nuestro perfil de Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Contactar por WhatsApp"><i class="ph ph-whatsapp-logo" aria-hidden="true"></i></a>
         </div>
       </div>
 
@@ -136,6 +136,8 @@
   .footer-links a {
     color: var(--color-text-light);
     transition: all 0.2s;
+    display: inline-block;
+    padding: 0.25rem 0; /* Expanded touch target for mobile */
   }
 
   .footer-links a:hover {
