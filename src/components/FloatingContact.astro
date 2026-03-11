@@ -1,0 +1,109 @@
+---
+const phoneNumber = "51994678713";
+const displayPhone = "+51 994 678 713";
+const whatsappMessage = "Hola! Vengo de la página web y necesito un servicio de gasfitería.";
+---
+
+<div class="floating-container">
+  <!-- Botón Teléfono -->
+  <a 
+    href={`tel:+${phoneNumber}`} 
+    class="float-btn float-phone" 
+    aria-label={`Llamar al ${displayPhone}`}
+  >
+    <i class="ph ph-phone"></i>
+  </a>
+
+  <!-- Botón WhatsApp -->
+  <a 
+    href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    class="float-btn float-wa" 
+    aria-label="Contactar por WhatsApp"
+  >
+    <i class="ph ph-whatsapp-logo"></i>
+  </a>
+</div>
+
+<style>
+  .floating-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 1000;
+  }
+
+  /* Base styles for both buttons */
+  .float-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 32px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .float-btn:hover, 
+  .float-btn:focus {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    outline: none;
+  }
+
+  /* Specific styles */
+  .float-phone {
+    background-color: var(--color-primary); /* Uses main blue */
+  }
+
+  .float-wa {
+    background-color: #25D366; /* Official WhatsApp Green */
+  }
+
+  /* Animation for WhatsApp to grab attention */
+  .float-wa {
+    animation: pulse-wa 2s infinite;
+  }
+
+  @keyframes pulse-wa {
+    0% {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+  }
+
+  /* Mobile Optimization */
+  @media (max-width: 768px) {
+    .floating-container {
+      bottom: 20px;
+      right: 20px;
+      gap: 12px;
+    }
+
+    .float-btn {
+      width: 56px;
+      height: 56px;
+      font-size: 28px;
+    }
+    
+    /* Reduced scale hover on mobile, relying mostly on touch targets */
+    .float-btn:hover, 
+    .float-btn:focus {
+      transform: translateY(-2px);
+    }
+  }
+</style>
