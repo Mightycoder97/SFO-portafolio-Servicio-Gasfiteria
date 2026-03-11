@@ -6,9 +6,53 @@ import Footer from '../components/Footer.astro';
 interface Props {
 	title: string;
 	description?: string;
+	image?: string;
+	canonicalURL?: string | URL;
+	type?: 'website' | 'article';
 }
 
-const { title, description = "Gasfitero en Juliaca. Servicios a nivel nacional, atención rápida y profesional." } = Astro.props;
+const { 
+	title, 
+	description = "Gasfitero en Juliaca. Servicios a nivel nacional, atención rápida y profesional para hogares y empresas. Detección de fugas, desatoros, termas y más.", 
+	image = "/img/og-image.jpg", // We'll assume a default OG image path
+	canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.gasfiteroenjuliaca.pe'),
+	type = 'website'
+} = Astro.props;
+
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": "PlumbingService",
+	"name": "Gasfitero en Juliaca",
+	"image": new URL(image, canonicalURL).toString(),
+	"url": canonicalURL.toString(),
+	"telephone": "+51987654321",
+	"address": {
+		"@type": "PostalAddress",
+		"addressLocality": "Juliaca",
+		"addressRegion": "Puno",
+		"addressCountry": "PE"
+	},
+	"geo": {
+		"@type": "GeoCoordinates",
+		"latitude": -15.4957,
+		"longitude": -70.1332
+	},
+	"openingHoursSpecification": {
+		"@type": "OpeningHoursSpecification",
+		"dayOfWeek": [
+			"Monday",
+			"Tuesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday",
+			"Sunday"
+		],
+		"opens": "00:00",
+		"closes": "23:59"
+	},
+	"priceRange": "$$"
+};
 ---
 
 <!doctype html>
@@ -21,8 +65,30 @@ const { title, description = "Gasfitero en Juliaca. Servicios a nivel nacional, 
 		<link rel="preload" as="image" href="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=2070&auto=format&fit=crop" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} | Gasfitero en Juliaca</title>
+		
+		<!-- SEO Base -->
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="keywords" content="gasfitero, Juliaca, plomeria, desatoro, fugas de agua, termas, Puno, tuberias, mantenimiento, reparacion" />
+		
+		<!-- Open Graph / Facebook / LinkedIn -->
+		<meta property="og:type" content={type} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={`${title} | Gasfitero en Juliaca`} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, canonicalURL).toString()} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={`${title} | Gasfitero en Juliaca`} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(image, canonicalURL).toString()} />
+
+		<!-- JSON-LD Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+
 		<!-- Phosphor Icons -->
-		<script src="https://unpkg.com/@phosphor-icons/web"></script>
+		<script is:inline src="https://unpkg.com/@phosphor-icons/web"></script>
 	</head>
 	<body>
 		<Header />
