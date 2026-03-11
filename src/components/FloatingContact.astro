@@ -4,16 +4,7 @@ const displayPhone = "+51 994 678 713";
 const whatsappMessage = "Hola! Vengo de la página web y necesito un servicio de gasfitería.";
 ---
 
-<div class="floating-container">
-  <!-- Botón Teléfono -->
-  <a 
-    href={`tel:+${phoneNumber}`} 
-    class="float-btn float-phone" 
-    aria-label={`Llamar al ${displayPhone}`}
-  >
-    <i class="ph ph-phone"></i>
-  </a>
-
+<div class="floating-left">
   <!-- Botón WhatsApp -->
   <a 
     href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`} 
@@ -26,81 +17,110 @@ const whatsappMessage = "Hola! Vengo de la página web y necesito un servicio de
   </a>
 </div>
 
+<div class="floating-right">
+  <!-- Botón Teléfono -->
+  <a 
+    href={`tel:+${phoneNumber}`} 
+    class="float-btn float-phone" 
+    aria-label={`Llamar al ${displayPhone}`}
+  >
+    <i class="ph ph-phone"></i>
+  </a>
+</div>
+
 <style>
-  .floating-container {
+  .floating-left {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1000;
+  }
+
+  .floating-right {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
     z-index: 1000;
   }
 
   /* Base styles for both buttons */
   .float-btn {
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 32px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 34px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-decoration: none;
     cursor: pointer;
+    border: 3px solid rgba(255, 255, 255, 0.5); /* Glowing border effect */
   }
 
   .float-btn:hover, 
   .float-btn:focus {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border-color: white;
     outline: none;
   }
 
   /* Specific styles */
   .float-phone {
-    background-color: var(--color-primary); /* Uses main blue */
+    background-color: var(--color-primary); 
+    background-image: linear-gradient(135deg, var(--color-primary), #1a365d);
+    animation: bounce-phone 3s infinite ease-in-out;
   }
 
   .float-wa {
-    background-color: #25D366; /* Official WhatsApp Green */
-  }
-
-  /* Animation for WhatsApp to grab attention */
-  .float-wa {
+    background-color: #25D366;
+    background-image: linear-gradient(135deg, #25D366, #128C7E);
     animation: pulse-wa 2s infinite;
   }
 
   @keyframes pulse-wa {
     0% {
-      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.8), 0 4px 15px rgba(0, 0, 0, 0.4);
     }
     70% {
-      box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      box-shadow: 0 0 0 20px rgba(37, 211, 102, 0), 0 4px 15px rgba(0, 0, 0, 0.4);
     }
     100% {
-      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 4px 15px rgba(0, 0, 0, 0.4);
     }
+  }
+
+  @keyframes bounce-phone {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Hover pauses animations */
+  .float-btn:hover {
+    animation-play-state: paused;
   }
 
   /* Mobile Optimization */
   @media (max-width: 768px) {
-    .floating-container {
+    .floating-left {
+      left: 15px;
       bottom: 20px;
-      right: 20px;
-      gap: 12px;
+    }
+    .floating-right {
+      right: 15px;
+      bottom: 20px;
     }
 
     .float-btn {
-      width: 56px;
-      height: 56px;
+      width: 55px;
+      height: 55px;
       font-size: 28px;
+      border-width: 2px;
     }
     
-    /* Reduced scale hover on mobile, relying mostly on touch targets */
     .float-btn:hover, 
     .float-btn:focus {
       transform: translateY(-2px);
