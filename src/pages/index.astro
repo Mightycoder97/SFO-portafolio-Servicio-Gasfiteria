@@ -1,127 +1,275 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ServiceCard from '../components/ServiceCard.astro';
-import CTA from '../components/CTA.astro';
+import FloatingContact from '../components/FloatingContact.astro';
 
-const featuredServices = [
-  {
-    title: "Detección de Fugas",
-    description: "Ubicamos y reparamos filtraciones ocultas sin romper de más, utilizando tecnología moderna.",
-    icon: "ph ph-magnifying-glass-plus",
-    slug: "fugas"
-  },
-  {
-    title: "Desatoro de Tuberías",
-    description: "Eliminamos cualquier obstrucción en inodoros, lavaderos y redes principales rápidamente.",
-    icon: "ph ph-pipe",
-    slug: "desatoro"
-  },
-  {
-    title: "Instalación de Termas",
-    description: "Instalamos y reparamos termas eléctricas, a gas y solares con total garantía de seguridad.",
-    icon: "ph ph-thermometer-hot",
-    slug: "termas"
-  },
-  {
-    title: "Bombas de Agua",
-    description: "Mantenimiento e instalación de sistemas hidroneumáticos para presión constante.",
-    icon: "ph ph-engine",
-    slug: "bombas"
-  }
-];
+const phoneNumber = "51994678713";
+const displayPhone = "+51 994 678 713";
+const whatsappMessage = "Hola! Vengo de la página web y necesito un servicio de gasfitería.";
 ---
 
 <Layout 
-  title="Inicio"
-  description="Gasfitero en Juliaca. Servicios a nivel nacional, atención rápida y profesional para hogares y empresas. Detección de fugas, desatoros, termas y cisternas."
+  title="Gasfitero Juliaca - Servicio Inmediato 24/7"
+  description="Gasfitero en Juliaca con atención inmediata para emergencias. Servicio profesional garantizado. Contáctanos ahora por WhatsApp o teléfono."
+  hideHeader
 >
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="container hero-content animate-fade-in">
-      <span class="badge">Servicio Estrella en Juliaca y Todo el Perú</span>
-      <h1>El mejor servicio de <span class="text-primary text-highlight">Gasfitería en Juliaca</span> a tu alcance</h1>
-      <p class="hero-desc">Soluciones rápidas y efectivas para hogares y empresas en Juliaca. Desde reparaciones de emergencia hasta instalaciones complejas de fontanería en toda la ciudad de Juliaca.</p>
-      <div class="hero-actions">
-        <a href="/servicios" class="btn btn-primary btn-lg">Ver Servicios</a>
-        <a href="/contacto" class="btn btn-outline btn-lg text-white border-white">Llamar Ahora</a>
+      <span class="badge">Servicio 24/7 en Juliaca y Todo el Perú</span>
+      <h1>
+        <span class="text-white">Servicio de Gasfitería </span>
+        <span class="text-gradient">Inmediato</span>
+        <span class="text-white"> en Juliaca</span>
+      </h1>
+      <p class="hero-desc">Atención inmediata para emergencias de gasfitería. Trabajo profesional garantizado. Aliviamos tu emergencia rápidamente.</p>
+      
+      <!-- Contact Buttons -->
+      <div class="contact-actions">
+        <a 
+          href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-whatsapp btn-lg contact-wa"
+        >
+          <i class="ph ph-whatsapp-logo whatsapp-icon"></i>
+          Contactar por WhatsApp
+        </a>
+        <a 
+          href={`tel:+${phoneNumber}`} 
+          class="btn btn-outline btn-lg text-white border-white contact-phone"
+        >
+          <i class="ph ph-phone"></i>
+          Llamar Ahora
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Features Section -->
+  <!-- Benefits Section -->
   <section class="section bg-subtle">
     <div class="container">
-      <div class="features-grid grid grid-cols-3">
-        <div class="feature-card text-center">
-          <div class="feature-icon"><i class="ph ph-clock-counter-clockwise"></i></div>
-          <h3>Atención 24/7 en Juliaca</h3>
-          <p class="text-light">Emergencias no avisan. Nuestro equipo de gasfiteros en Juliaca está listo para atenderte en cualquier momento.</p>
+      <h2 class="title-lg text-center">¿Por qué contactarnos?</h2>
+      <p class="text-light max-w-2xl mx-auto">Nuestro servicio está diseñado para resolver tus problemas de gasfitería de forma rápida y profesional.</p>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="ph ph-clock-counter-clockwise text-primary"></i>
+          </div>
+          <h3>Respuesta Inmediata</h3>
+          <p class="text-light">Atención inmediata las 24 horas para emergencias de gasfitería en Juliaca. Llegamos rápido para aliviar tu situación.</p>
         </div>
-        <div class="feature-card text-center">
-          <div class="feature-icon"><i class="ph ph-shield-check"></i></div>
-          <h3>Trabajo Garantizado en Juliaca</h3>
-          <p class="text-light">Técnicos calificados y materiales de primera calidad aseguran un resultado duradero.</p>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="ph ph-shield-check text-primary"></i>
+          </div>
+          <h3>Trabajo Profesional Garantizado</h3>
+          <p class="text-light">Técnicos certificados en Juliaca que garantizan un trabajo profesional y duradero en cada servicio.</p>
         </div>
-        <div class="feature-card text-center">
-          <div class="feature-icon"><i class="ph ph-map-pin-line"></i></div>
-          <h3>Cobertura Nacional</h3>
-          <p class="text-light">Nuestra base está en Juliaca, pero atendemos proyectos y emergencias en todo el Perú.</p>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="ph ph-map-pin-line text-primary"></i>
+          </div>
+          <h3>Especialistas en Juliaca</h3>
+          <p class="text-light">Servicio de gasfitería local en Juliaca con conocimiento específico de la zona y atención personalizada para emergencias.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Featured Services -->
+  <!-- Services Grid Section -->
   <section class="section">
     <div class="container">
-      <div class="section-header text-center mb-12">
-        <h2 class="title-lg">Nuestros Servicios <span class="highlight">Destacados en Juliaca</span></h2>
-        <p class="text-light max-w-2xl mx-auto">Solucionamos cualquier problema de gasfitería en Juliaca con rapidez y profesionalismo.</p>
-      </div>
+      <h2 class="title-lg text-center">Nuestros Servicios</h2>
+      <p class="text-light max-w-2xl mx-auto">Soluciones rápidas y efectivas para cualquier problema de gasfitería en Juliaca.</p>
       
-      <div class="grid grid-cols-4">
-        {featuredServices.map(service => (
-          <ServiceCard {...service} />
-        ))}
-      </div>
-      
-      <div class="text-center mt-12">
-        <a href="/servicios" class="btn btn-outline">Ver todos los servicios &rarr;</a>
+      <div class="services-compact-grid">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="ph ph-magnifying-glass-plus"></i>
+          </div>
+          <h4>Detección de Fugas</h4>
+          <p class="text-light">Ubicamos y reparamos filtraciones ocultas sin romper de más.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="ph ph-pipe"></i>
+          </div>
+          <h4>Desatoro de Tuberías</h4>
+          <p class="text-light">Eliminamos obstrucciones en inodoros, lavaderos y redes principales.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="ph ph-thermometer-hot"></i>
+          </div>
+          <h4>Instalación de Termas</h4>
+          <p class="text-light">Instalamos y reparamos termas eléctricas, a gas y solares.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="ph ph-engine"></i>
+          </div>
+          <h4>Bombas de Agua</h4>
+          <p class="text-light">Mantenemos e instalamos sistemas hidroneumáticos.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="ph ph-truck"></i>
+          </div>
+          <h4>Cisternas y Tanques</h4>
+          <p class="text-light">Instalación, mantenimiento y reparación de cisternas.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="ph ph-wrench"></i>
+          </div>
+          <h4>Mantenimiento Preventivo</h4>
+          <p class="text-light">Revisiones periódicas para evitar emergencias futuras.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="ph ph-drop"></i>
+          </div>
+          <h4>Grifería y Sanitarios</h4>
+          <p class="text-light">Instalación y reparación de grifos, inodoros y lavamanos.</p>
+        </div>
+        
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="ph ph-gas-can"></i>
+          </div>
+          <h4>Instalaciones de Gas</h4>
+          <p class="text-light">Trabajos seguros en instalaciones de gas natural y licuado.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <CTA />
+  <!-- Final CTA -->
+  <section class="section bg-primary">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="title-lg text-white mb-8">¿Listo para solucionar tu problema de gasfitería?</h2>
+        <p class="text-light max-w-2xl mx-auto mb-8">No esperes más, contáctanos ahora y recibe atención inmediata.</p>
+        
+        <div class="final-contact-actions flex flex-col sm:flex-row gap-6">
+          <a 
+            href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-whatsapp btn-lg w-full sm:w-1/2"
+          >
+            <i class="ph ph-whatsapp-logo"></i>
+            Escribir por WhatsApp
+          </a>
+          <a 
+            href={`tel:+${phoneNumber}`} 
+            class="btn btn-outline-yellow btn-lg w-full sm:w-1/2"
+          >
+            <i class="ph ph-phone"></i>
+            Llamar Ahora
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style>
   .hero {
     position: relative;
-    padding: 8rem 0;
+    padding: 10rem 0;
     overflow: hidden;
     color: white;
-    min-height: 80vh;
+    min-height: 90vh;
     display: flex;
     align-items: center;
   }
-
+  
   .hero-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Dark aesthetic background with deep blue/grey gradient */
     background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=2070&auto=format&fit=crop') center/cover;
     z-index: -1;
   }
-
+  
+  .hero-logo {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 35px;
+    height: 35px;
+    opacity: 0.8;
+    pointer-events: none;
+  }
+  
+  .hero-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
   .hero-content {
     max-width: 800px;
+    text-align: center;
+    padding: 0 1rem;
   }
-
+  
+  .text-gradient {
+    background: linear-gradient(to right, #25D366, #128C7E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .text-white {
+    color: white;
+  }
+  
+  .btn-whatsapp {
+    background-color: #25D366;
+    color: white;
+  }
+  
+  .btn-whatsapp:hover {
+    background-color: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .btn-outline-yellow {
+    background-color: transparent;
+    color: var(--color-secondary);
+    border: 2px solid var(--color-secondary);
+  }
+  
+  .btn-outline-yellow:hover {
+    background-color: var(--color-secondary);
+    color: white;
+  }
+  
+  .whatsapp-icon {
+    font-size: 1.5rem;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    text-align: center;
+  }
+  
   .badge {
     display: inline-block;
     background-color: rgba(245, 188, 24, 0.2);
@@ -133,63 +281,85 @@ const featuredServices = [
     margin-bottom: 1.5rem;
     border: 1px solid rgba(245, 188, 24, 0.4);
   }
-
+  
   h1 {
     font-size: clamp(3rem, 6vw, 4.5rem);
     color: white;
     margin-bottom: 1.5rem;
   }
-
+  
   .text-highlight {
     color: var(--color-primary);
   }
-
+  
   .hero-desc {
     font-size: 1.25rem;
     opacity: 0.9;
-    margin-bottom: 2.5rem;
-    line-height: 1.6;
     max-width: 650px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
   }
-
-  .hero-actions {
+  
+  .contact-actions {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .contact-wa,
+  .contact-phone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  
+  .display-phone {
+    font-weight: 600;
+    letter-spacing: 0.5px;
   }
   
   .btn-lg {
     padding: 1rem 2rem;
     font-size: 1.125rem;
+    font-weight: 600;
+    width: 100%;
+    max-width: 300px;
   }
   
   .border-white {
     border-color: rgba(255, 255, 255, 0.5);
   }
-
+  
   .border-white:hover {
     background-color: white;
     color: var(--color-text-dark);
   }
-
-  /* Features */
-  .bg-subtle {
-    background-color: var(--color-bg-subtle);
+  
+  /* Benefits Section */
+  .benefits-grid {
+    display: grid;
+    gap: 2rem;
+    margin-top: 3rem;
   }
-
-  .feature-card {
+  
+  .benefit-card {
     background-color: white;
-    padding: 3rem 2rem;
+    padding: 2.5rem;
     border-radius: var(--radius-lg);
+    text-align: center;
     box-shadow: var(--shadow-sm);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-
-  .feature-card:hover {
+  
+  .benefit-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-md);
   }
-
-  .feature-icon {
+  
+  .benefit-icon {
     width: 4rem;
     height: 4rem;
     margin: 0 auto 1.5rem;
@@ -201,29 +371,204 @@ const featuredServices = [
     justify-content: center;
     font-size: 2rem;
   }
-
-  .title-lg {
-    font-size: clamp(2rem, 4vw, 2.5rem);
+  
+  .benefit-card h3 {
+    font-size: 1.25rem;
+    margin: 1rem 0;
+    color: var(--color-text-dark);
   }
-
-  .mb-12 { margin-bottom: 3rem; }
-  .mt-12 { margin-top: 3rem; }
-  .max-w-2xl { max-width: 42rem; }
-  .mx-auto { margin-left: auto; margin-right: auto; }
-
-  @media (max-width: 768px) {
-    .hero-actions {
-      flex-direction: column;
+  
+  .benefit-card p {
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+  
+  /* Services Compact Grid */
+  .services-compact-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .service-item {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--color-border);
+  }
+  
+  .service-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-secondary);
+  }
+  
+  .service-icon {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto 1rem;
+    background-color: rgba(63, 87, 181, 0.1);
+    color: var(--color-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+  
+  .service-item h4 {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    color: var(--color-text-dark);
+  }
+  
+  .service-item p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.4;
+    margin: 0;
+  }
+  
+  /* Final CTA Section */
+  .section.bg-primary {
+    background: var(--color-primary);
+    background: linear-gradient(to right, var(--color-primary), #1a365d);
+    text-align: center;
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .section.bg-primary h2 {
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+  
+  .section.bg-primary p {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+  }
+  
+  .whatsapp-icon {
+    font-size: 1.5rem;
+  }
+  
+  .service-item {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--color-border);
+  }
+  
+  .service-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-secondary);
+  }
+  
+  .service-icon {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto 1rem;
+    background-color: rgba(63, 87, 181, 0.1);
+    color: var(--color-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+  
+  .service-item h4 {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    color: var(--color-text-dark);
+  }
+  
+  .service-item p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.4;
+    margin: 0;
+  }
+  
+  /* Final CTA Section */
+  .final-contact-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+    align-items: center;
+  }
+  
+  .final-contact-actions .btn-lg {
+    padding: 1.25rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  
+  /* Responsive adjustments */
+  @media (min-width: 768px) {
+    .benefits-grid {
+      grid-template-columns: repeat(3, 1fr);
     }
-    .hero {
-      padding: 4rem 0;
-      text-align: center;
-      min-height: 60vh;
+    
+    .services-compact-grid {
+      grid-template-columns: repeat(4, 1fr);
     }
+    
+    .final-contact-actions {
+      flex-direction: row;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    
+    .final-contact-actions .btn-lg {
+      /* Remove flex: 1 to prevent stretching, let buttons size to content */
+    }
+    
     .hero-content {
-      display: flex;
+      text-align: left;
+    }
+    
+    .contact-actions {
+      align-items: stretch;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .services-compact-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .final-contact-actions {
       flex-direction: column;
+      gap: 1.5rem;
       align-items: center;
+    }
+    
+    .hero {
+      padding: 6rem 0;
+      min-height: 80vh;
+    }
+    
+    .hero-logo {
+      top: 0.5rem;
+      left: 0.5rem;
+      width: 30px;
+      height: 30px;
     }
   }
 </style>

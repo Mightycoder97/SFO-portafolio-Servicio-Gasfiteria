@@ -5,20 +5,22 @@ import Footer from '../components/Footer.astro';
 import FloatingContact from '../components/FloatingContact.astro';
 
 interface Props {
-	title: string;
-	description?: string;
-	image?: string;
-	canonicalURL?: string | URL;
-	type?: 'website' | 'article';
-}
+ 	title: string;
+ 	description?: string;
+ 	image?: string;
+ 	canonicalURL?: string | URL;
+ 	type?: 'website' | 'article';
+ 	hideHeader?: boolean;
+ }
 
-const { 
-	title, 
-	description = "Gasfitero en Juliaca. Servicios a nivel nacional, atención rápida y profesional para hogares y empresas. Detección de fugas, desatoros, termas y más.", 
-	image = "/img/og-image.jpg", // We'll assume a default OG image path
-	canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.gasfiteroenjuliaca.pe'),
-	type = 'website'
-} = Astro.props;
+ const { 
+ 	title, 
+ 	description = "Gasfitero en Juliaca. Servicios a nivel nacional, atención rápida y profesional para hogares y empresas. Detección de fugas, desatoros, termas y más.", 
+ 	image = "/img/og-image.jpg", // We'll assume a default OG image path
+ 	canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.gasfiteroenjuliaca.pe'),
+ 	type = 'website',
+ 	hideHeader = false
+ } = Astro.props;
 
 const structuredData = {
 	"@context": "https://schema.org",
@@ -92,11 +94,11 @@ const structuredData = {
 		<script is:inline src="https://unpkg.com/@phosphor-icons/web"></script>
 	</head>
 	<body>
-		<Header />
-		<main>
-			<slot />
-		</main>
-		<Footer />
-		<FloatingContact />
+  {hideHeader ? null : <Header />}
+  <main>
+    <slot />
+  </main>
+  <Footer />
+  <FloatingContact />
 	</body>
 </html>
